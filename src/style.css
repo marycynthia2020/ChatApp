@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.friends-container{
+ display: flex;
+ justify-items: space-between;
+ align-items: center;
+ margin-bottom: 24px;
+}
+
+.friend-div{
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 24px;
+padding: 24px;
+}
+
+.message-sent, .message-recieved{
+    background-color: aqua;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 8px 16px;
+
+}
+
+.message-sent{
+    justify-self: end;
+}
+
+.message-recieved{
+    justify-self: start;
+}
