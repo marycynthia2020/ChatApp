@@ -65,7 +65,7 @@ function register(e) {
       password: hashedPassword,
       isLoggedIn:false,
       id:crypto.randomUUID(),
-      messages: []
+      message: [],
     };
 
     for(let i = 0; i< users.length; i++) {

@@ -28,7 +28,6 @@ function login(e) {
       alert("details not found, sign up");
     }
     if (user) {
-      // let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null
       user.isLoggedIn = true
       localStorage.setItem("currentUser", JSON.stringify(user)) 
 

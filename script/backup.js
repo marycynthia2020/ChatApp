@@ -26,10 +26,6 @@ function displayFriends(user) {
   document.getElementById("friends-list").appendChild(div);
 
   div.onclick = function () {
-    console.log(user.id);
-    // let friend_div = document.createElement("div");
-    // friend_div.className = "friend-div";
-
     document.getElementById("friend-div").innerHTML = `<img
             src="./images/girl4.jpeg"
             alt=""
