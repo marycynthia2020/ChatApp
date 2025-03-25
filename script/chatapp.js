@@ -99,15 +99,6 @@ function displayMessages(id) {
   });
 }
 
-logoutBtn.addEventListener("click", logout);
-function logout() {
-  let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
-  if (currentUser) {
-    localStorage.removeItem("currentUser");
-    window.location.href = "login.html";
-  }
-}
-
 //Searching of friends by first name and last name
 searchInput.addEventListener("input", searchFriends)
 
@@ -124,6 +115,14 @@ function searchFriends(e){
         displayFriends(friend);
       })
   } 
+}
+
+logoutBtn.addEventListener("click", logout);
+
+function logout() {
+  let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
 }
 
 function formatsTime(timestamp){

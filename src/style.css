@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.clip {
+    /* clip-path: polygon(74% 0, 100% 0, 100% 100%, 0% 100%, 9% 100%, 25% 100%);
+     */
+     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
 .friends-container{
  display: flex;
- justify-content: space-between;
+ gap: 12px;
+ /* justify-content: space-between; */
  align-items: center;
- margin-bottom: 24px;
+ margin-bottom: 12px;
 }
 
 .friend-div{
