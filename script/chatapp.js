@@ -59,6 +59,7 @@ function sendMessage(id) {
       sender: currentUser.id,
       receiver: selectedUser.id,
       message: textMessage,
+      timestamp:new Date().getTime()
     };
     selectedUser.message.push(message);
     localStorage.setItem("users", JSON.stringify(users));
@@ -79,16 +80,21 @@ function displayMessages(id) {
   document.getElementById("all-message-holder").innerHTML = "";
   currentUser.message.forEach(userMessage => {
     if (
-      (userMessage.receiver === id && userMessage.sender === currentUser.id) ||
-      (userMessage.receiver === currentUser.id && userMessage.sender === id)
+      (userMessage.receiver === id && userMessage.sender === currentUser.id)
+      // (userMessage.receiver === currentUser.id && userMessage.sender === id)
     ) {
-      const sentholder = document.createElement("p");
-      sentholder.className =
+      const messageHolder = document.createElement("p");
+      let timeHolder = document.createElement("span")
+
+     timeHolder.className = "time"
+      messageHolder.className =
         currentUser.id === userMessage.sender && userMessage.receiver === id
           ? "message-sent"
           : "message-recieved";
-      sentholder.innerText = userMessage.message;
-      document.getElementById("all-message-holder").appendChild(sentholder);
+      messageHolder.innerText = userMessage.message;
+      timeHolder.innerHTML = formatsTime(userMessage.timestamp)
+      messageHolder.appendChild(timeHolder)
+      document.getElementById("all-message-holder").appendChild(messageHolder);
     }
   });
 }
@@ -118,6 +124,12 @@ function searchFriends(e){
         displayFriends(friend);
       })
   } 
-  
-  
 }
+
+function formatsTime(timestamp){
+  const date = new Date(timestamp)
+  return date.getHours() +":" + date.getMinutes()
+}
+
+
+// console.log(time(1742758294955))

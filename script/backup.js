@@ -155,7 +155,7 @@ function displayMessages(id){
 // currentUser.message.forEach(userMessage => {
 //   if(userMessage.receiver === id && userMessage.sender === currentUser.id || userMessage.receiver === currentUser.id && userMessage.sender === id) {
 //     const sentholder = document.createElement("p")
-//         sentholder.className = "message-sent"
+//  sentholder.className = currentUser.id === message.sender && message.receiver === id? "message-sent":"message-recieved"
 //         sentholder.innerText = userMessage.message
 //     document.getElementById("all-message-holder").appendChild(sentholder)
 

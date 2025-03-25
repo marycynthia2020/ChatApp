@@ -854,6 +854,11 @@ video {
   justify-self: start;
 }
 
+.time {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
 @media (min-width: 768px) {
   .md\:w-2\/3 {
     width: 66.666667%;
