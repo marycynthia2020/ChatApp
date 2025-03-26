@@ -1,6 +1,5 @@
 const logoutBtn = document.getElementById("logout");
 const searchInput = document.getElementById("searchInput")
-
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 document.getElementById("greetings").innerText += ` ${currentUser.firstName}`;
 
@@ -21,20 +20,24 @@ function displayFriends(user) {
           <img
             src="./images/girl1.jpeg"
             alt=""
-            class="rounded-full w-14 h-14"
+            class="rounded-full w-12 h-12"
           />
-            <h4 class="text-lgs font-medium">${user.firstName} ${user.lastName}</h4>
+          <div class="flex gap-3 flex-col">
+            <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
+           
+          </div
         `;
   document.getElementById("friends-list").appendChild(div);
 
   // Add onclick to each div so that on click, we can get the exact user
   div.onclick = function () {
     document.getElementById("send-message-container").style.display = "flex";
+    document.getElementById("friend-div").style.display = "flex"
     document.getElementById("friend-div").innerHTML = `
             <img
             src="./images/girl1.jpeg"
             alt=""
-            class="rounded-full w-14 h-14"
+            class="rounded-full w-12 h-12"
           />
           <h4 class="text-2xl font-medium" id="current-friend-name">${user.firstName} ${user.lastName}</h4>
         `;
@@ -70,8 +73,11 @@ function sendMessage(id) {
     current.message.push(message);
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     localStorage.setItem("users", JSON.stringify(users));
-
+    
     displayMessages(selectedUser.id);
+    
+
+   
   }
 }
 
@@ -97,6 +103,7 @@ function displayMessages(id) {
       document.getElementById("all-message-holder").appendChild(messageHolder);
     }
   });
+  
 }
 
 //Searching of friends by first name and last name

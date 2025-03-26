@@ -8,19 +8,22 @@
      */
      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+
 .friends-container{
  display: flex;
  gap: 12px;
- /* justify-content: space-between; */
- align-items: center;
  margin-bottom: 12px;
+ align-items: center;
+ padding-block: 8px;
+ color: black;
+
 }
 
 .friend-div{
 display: flex;
 align-items: center;
 gap: 16px;
-margin-bottom: 24px;
+margin-bottom: 32px;
 padding: 24px;
 }
 
@@ -30,18 +33,23 @@ padding: 24px;
     width: fit-content;
     /* min-width: 100px; */
     padding: 8px 16px;
+    font-size: 18px;
+    border-radius: 50px;
 
 }
-
 .message-sent{
+    background-color: #8692ea;
+    color: white;
+ 
     justify-self: end;
 }
 
 .message-recieved{
     justify-self: start;
+    background-color: white;
 }
 
 .time {
     font-size: 12px;
-    margin-left: 5px;
+    margin-left: 10px;
 }

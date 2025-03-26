@@ -6,13 +6,17 @@
     <link rel="stylesheet" href="/dist/style.css" />
     <title>Messaging App</title>
   </head>
-  <body class="bg-[#9098e8] w-screen h-screen overflow-x-hidden grid place-items-center">
-    <div class="grid grid-cols-12 grid-rows-12 overflow-x-hidden w-4/5 h-[90%] shadow-xl ">
-      <div class="bg-[#6c77de] col-span-1 row-span-12 pt-5 ">
+  <body
+    class="bg-[#9098e8] w-screen h-screen grid place-items-center"
+  >
+    <div
+      class="rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-[80%] h-[90%] max-h-[80%] overflow-y-hidden shadow-xl lets"
+    >
+      <div class="bg-[#6c77de] col-span-1 row-span-12 pt-5">
         <?xml version="1.0" ?>
         <?xml version="1.0" encoding="utf-8"?>
         <svg
-        class="mx-auto"
+          class="mx-auto"
           width="30px"
           height="30px"
           viewBox="0 0 24 24"
@@ -29,78 +33,64 @@
           />
         </svg>
       </div>
-      <div class="bg-white col-span-11 row-span-1 grid grid-cols-6 grid-rows-6 pl-4">
+      <div
+        class="bg-white col-span-11 row-span-1 grid grid-cols-6 grid-rows-6 pl-4"
+      >
         <input
-        type="text"
-        placeholder="Search "
-        class="border-2 border-gray-300 rounded-lg col-span-2 row-span-6 h-1/2 my-auto p-2 "
-        id="searchInput"
-      />
-      <div class="row-span-6 col-span-3"></div>
-        <div class="clip bg-[#5a66d0] h-full col-span-1 row-span-6 place-items-end ">nbzx jb</div>
-      </div>
-      <!-- fist with names -->
-      <div class=" col-span-3 row-span-11 bg-[#dee3fd] ">
-        <div class="flex justify-between items-center mb-6 p-4 bg-[#5a66d0]">
-          <div class="flex gap-4 items-center ">
+          type="text"
+          placeholder="Search friends by their names"
+          class=" shadow-md  outline-none border-gray-300 rounded-full col-span-2 row-span-6 h-4/5 my-auto p-2"
+          id="searchInput"
+        />
+        <div class="row-span-6 col-span-1"></div>
+        <div
+          class="clip bg-[#5f6cd5] h-full col-span-3 row-span-6 place-items-end grid pr-4"
+        >
+          <div
+            class="flex justify-between gap-4 items-center place-items-end my-auto"
+          >
+          <p id="greetings" class="text-lg font-semibold text-white"></p>
             <img
               src="./images/owner.jpeg"
               alt=""
-              class="rounded-full w-14 h-14"
+              class="rounded-full w-10 h-10"
             />
-            <h1 class="font-semibold text-3xl">Messages</h1>
-          </div>
-          <div class="flex gap-4 items-center">
-            <?xml version="1.0" encoding="utf-8"?>
-            <svg
-              width="30px"
-              height="30px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z"
-                stroke="#000000"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+          
           </div>
         </div>
-        <p id="greetings" class="mb-6 text-lg font-semibold p-4">Welcome back</p>
-       
-        <div id="friends-list"></div>
+      </div>
+
+      <!-- fist with names -->
+      <div class="col-span-3 row-span-11 bg-[#dee3fd]">
+        <p class="text-2xl text-white text-center p-4 bg-[#5f6cd5] ">Friends</p>
+        <div id="friends-list" class="p-4 max-h-[65vh] overflow-y-scroll"></div>
       </div>
 
       <!-- second with names -->
-      <div
-        class="bg-[#f9f7f4] relative col-span-8 row-span-11"
-      >
-        <div class="flex items-center gap-4 mb-6 p-6" id="friend-div">
+      <div class=" col-span-8 row-span-11 relative bg-white ">
+        <div class=" hidden bg-white items-center gap-4 p-2 px-4 shadow-md" id="friend-div">
           <!-- for current user info display -->
         </div>
 
-        <div class="p-6 grid gap-2 mb-32" id="all-message-holder">
+        <div class="p-6 grid gap-2 overflow-y-scroll max-h-[55vh] " id="all-message-holder">
           <!-- for message display -->
         </div>
 
         <div
-          class="hidden p-6 gap-4 absolute bottom-0 w-full nt-30"
+          class=" flex gap-4 absolute bottom-0 mb-2 right-0 left-0  mx-auto w-full  pl-8 "
           id="send-message-container"
         >
           <input
             type="text"
             placeholder="message your friends"
-            class="border-2 border-black p-4 rounded-md w-4/5"
+            class=" outline-1 border-[#979ee3] border rounded-full w-4/5 p-4 outline-[#979ee3]"
             id="messages"
           />
           <button
-            class="bg-blue-400 text-white p-4 rounded-md w-1/6"
+            class="bg-[#6c77de] text-white text-2xl px-6 py-1 rounded-full"
             id="send-message"
           >
-            Send a message
+            send
           </button>
         </div>
       </div>
