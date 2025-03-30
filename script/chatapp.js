@@ -41,20 +41,21 @@ function displayFriends(user) {
     if(secondContainer.classList.contains("hidden")){
       firstContainer.style.display = "none"
       secondContainer.classList.remove("hidden")
+      document.getElementById("friend-div").innerHTML = `
+        
+      <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
+    `;
+displayMessages(user.id);
+
+// add event to the send message btn so you can get the user id
+const sendBtn = document.getElementById("send-message");
+sendBtn.onclick = function () {
+  sendMessage(user.id);
+};
     }
 
 
-    document.getElementById("friend-div").innerHTML = `
-        
-          <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
-        `;
-    displayMessages(user.id);
-
-    // add event to the send message btn so you can get the user id
-    const sendBtn = document.getElementById("send-message");
-    sendBtn.onclick = function () {
-      sendMessage(user.id);
-    };
+   
   };
 }
 
