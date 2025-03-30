@@ -1,5 +1,9 @@
 const logoutBtn = document.getElementById("logout");
-const searchInput = document.getElementById("searchInput")
+const searchInput = document.getElementById("searchInput");
+const container = document.querySelector(".container")
+const firstContainer = document.querySelector(".first")
+const secondContainer = document.querySelector(".second")
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 document.getElementById("greetings").innerText += ` ${currentUser.firstName}`;
 
@@ -13,33 +17,36 @@ users.map(user => {
 });
 
 function displayFriends(user) {
+  // to generate avatar for users
+  const imageDiv = document.createElement("div");
+  imageDiv.className = "imageDiv";
+  const firstLetter = user.firstName.slice(0, 1);
+  const secondLetter = user.lastName.slice(0, 1);
+  imageDiv.innerHTML = `<span class = "text-lg">${firstLetter}${secondLetter}</span>`;
+
   const div = document.createElement("div");
   div.className = "friends-container";
+  div.appendChild(imageDiv);
 
-  div.innerHTML = `
-          <img
-            src="./images/girl1.jpeg"
-            alt=""
-            class="rounded-full w-12 h-12"
-          />
-          <div class="flex gap-3 flex-col">
-            <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
-           
-          </div
+  div.innerHTML += `
+          <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
         `;
   document.getElementById("friends-list").appendChild(div);
 
   // Add onclick to each div so that on click, we can get the exact user
   div.onclick = function () {
     document.getElementById("send-message-container").style.display = "flex";
-    document.getElementById("friend-div").style.display = "flex"
+    document.getElementById("friend-div").style.display = "flex";
+
+    if(secondContainer.classList.contains("hidden")){
+      firstContainer.style.display = "none"
+      secondContainer.classList.remove("hidden")
+    }
+
+
     document.getElementById("friend-div").innerHTML = `
-            <img
-            src="./images/girl1.jpeg"
-            alt=""
-            class="rounded-full w-12 h-12"
-          />
-          <h4 class="text-2xl font-medium" id="current-friend-name">${user.firstName} ${user.lastName}</h4>
+        
+          <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
         `;
     displayMessages(user.id);
 
@@ -62,7 +69,7 @@ function sendMessage(id) {
       sender: currentUser.id,
       receiver: selectedUser.id,
       message: textMessage,
-      timestamp:new Date().getTime()
+      timestamp: new Date().getTime(),
     };
     selectedUser.message.push(message);
     localStorage.setItem("users", JSON.stringify(users));
@@ -73,55 +80,57 @@ function sendMessage(id) {
     current.message.push(message);
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     localStorage.setItem("users", JSON.stringify(users));
-    
-    displayMessages(selectedUser.id);
-    
 
-   
+    displayMessages(selectedUser.id);
   }
 }
+
 
 // function to display messages
 function displayMessages(id) {
   document.getElementById("all-message-holder").innerHTML = "";
   currentUser.message.forEach(userMessage => {
     if (
-      (userMessage.receiver === id && userMessage.sender === currentUser.id)
+      userMessage.receiver === id &&
+      userMessage.sender === currentUser.id
       // (userMessage.receiver === currentUser.id && userMessage.sender === id)
     ) {
-      const messageHolder = document.createElement("p");
-      let timeHolder = document.createElement("span")
+      const messageHolder = document.createElement("div");
+      const textHolder = document.createElement("p");
+      let timeHolder = document.createElement("p");
 
-     timeHolder.className = "time"
+      timeHolder.className = "time";
       messageHolder.className =
         currentUser.id === userMessage.sender && userMessage.receiver === id
           ? "message-sent"
           : "message-recieved";
-      messageHolder.innerText = userMessage.message;
-      timeHolder.innerHTML = formatsTime(userMessage.timestamp)
-      messageHolder.appendChild(timeHolder)
+      textHolder.innerText = userMessage.message;
+      timeHolder.innerHTML = formatsTime(userMessage.timestamp);
+      messageHolder.appendChild(textHolder);
+      messageHolder.appendChild(timeHolder);
       document.getElementById("all-message-holder").appendChild(messageHolder);
     }
   });
-  
 }
 
 //Searching of friends by first name and last name
-searchInput.addEventListener("input", searchFriends)
+searchInput.addEventListener("input", searchFriends);
 
-function searchFriends(e){
-  let string = e.target.value
-  const friends = users.filter(user => user.id !== currentUser.id)
+function searchFriends(e) {
+  let string = e.target.value;
+  const friends = users.filter(user => user.id !== currentUser.id);
 
-  let foundFriends =  friends.filter(friend => {
-    return friend.firstName.startsWith(string) || friend.lastName.startsWith(string)
-  })
-  if(foundFriends) {
-    document.getElementById("friends-list").innerHTML = ""
-      foundFriends.map(friend => {
-        displayFriends(friend);
-      })
-  } 
+  let foundFriends = friends.filter(friend => {
+    return (
+      friend.firstName.startsWith(string) || friend.lastName.startsWith(string)
+    );
+  });
+  if (foundFriends) {
+    document.getElementById("friends-list").innerHTML = "";
+    foundFriends.map(friend => {
+      displayFriends(friend);
+    });
+  }
 }
 
 logoutBtn.addEventListener("click", logout);
@@ -132,10 +141,7 @@ function logout() {
   window.location.href = "login.html";
 }
 
-function formatsTime(timestamp){
-  const date = new Date(timestamp)
-  return date.getHours() +":" + date.getMinutes()
+function formatsTime(timestamp) {
+  const date = new Date(timestamp);
+  return date.getHours() + ":" + date.getMinutes();
 }
-
-
-// console.log(time(1742758294955))

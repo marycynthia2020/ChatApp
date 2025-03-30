@@ -15,41 +15,71 @@
  margin-bottom: 12px;
  align-items: center;
  padding-block: 8px;
- color: black;
+ color: white;
+ border-bottom: 1px solid #ddddf6;
+
+ 
+ @media (max-width:1400px) { 
+    font-size: 12px;
+    
+ }
 
 }
 
-.friend-div{
+.friends-container div img, .imageDiv {
+    width: 48px;
+    height: 48px;
+    background-color: #ddddf6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #3b3b5d;
+
+}
+
+
+
+/* .friend-div{
 display: flex;
 align-items: center;
 gap: 16px;
 margin-bottom: 32px;
 padding: 24px;
+
+} */
+
+.friend-div img {
+    width: 48px;
+    height: 48px;
 }
 
 .message-sent, .message-recieved{
-    background-color: aqua;
-    border-radius: 10px;
     width: fit-content;
     /* min-width: 100px; */
-    padding: 8px 16px;
+    padding: 4px 8px;
     font-size: 18px;
-    border-radius: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
 
 }
 .message-sent{
-    background-color: #8692ea;
+    background-color: #80a1f6;
     color: white;
- 
     justify-self: end;
 }
 
 .message-recieved{
     justify-self: start;
     background-color: white;
+    color: black;
 }
 
 .time {
     font-size: 12px;
     margin-left: 10px;
+    align-self: flex-end;
 }
+

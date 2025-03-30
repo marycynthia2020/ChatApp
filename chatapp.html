@@ -7,33 +7,12 @@
     <title>Messaging App</title>
   </head>
   <body
-    class="bg-[#9098e8] w-screen h-screen grid place-items-center"
+    class="bg-[#3b3b5d] lg:bg-[#a7bcfc] w-screen lg:h-screen grid place-items-center"
   >
     <div
-      class="rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-full lg:w-[80vw] lg:h-[90%] lg:max-h-[80%] lg:overflow-y-hidden shadow-xl"
+      class="rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-full lg:w-[70%] lg:h-[90%] lg:max-h-[80%] lg:overflow-y-hidden shadow-xl container"
     >
-      <div class="bg-[#6c77de] col-span-1 row-span-12 pt-5">
-        <?xml version="1.0" ?>
-        <?xml version="1.0" encoding="utf-8"?>
-        <svg
-          class="mx-auto"
-          width="30px"
-          height="30px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          id="logout"
-        >
-          <path
-            d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M11 12H21M21 12L18.5 9.5M21 12L18.5 14.5"
-            stroke="#000000"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
-      <div
+      <!-- <div
         class="bg-white col-span-11 row-span-1 grid grid-cols-6 grid-rows-6 pl-4"
       >
         <input
@@ -58,36 +37,117 @@
           
           </div>
         </div>
-      </div>
+      </div>  -->
 
       <!-- fist with names -->
-      <div class="col-span-3 row-span-11 bg-[#dee3fd]">
-        <p class="text-2xl text-white text-center p-4 bg-[#5f6cd5] ">Friends</p>
-        <div id="friends-list" class="p-4 max-h-[65vh] overflow-y-scroll"></div>
+      <div class=" col-span-4 row-span-12 bg-[#3b3b5d] first">
+        <div class="flex items-center justify-between bg-[white] px-6 py-2">
+          <div class="flex gap-2 items-center">
+            <img
+              src="./images/owner.jpeg"
+              alt=""
+              class="rounded-full w-12 h-12"
+            />
+            <p id="greetings" class="text-lg font-semibold text-black"></p>
+          </div>
+          <div class="">
+            <?xml version="1.0" ?>
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              class="mx-auto my-auto"
+              width="30px"
+              height="30px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              id="logout"
+            >
+              <path
+                d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M11 12H21M21 12L18.5 9.5M21 12L18.5 14.5"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+       
+        <p class="text-2xl text-white text-center p-2 bg-[#3e3d60]">Chats</p>
+        <input
+          type="text"
+          placeholder="Search friends by their names"
+          class="shadow-md outline-none border-gray-300 w-full p-2 bg-[#2e2e51] text-white"
+          id="searchInput"
+        />
+        <div
+          id="friends-list"
+          class="p-4 max-h-[65vh] overflow-y-auto text-white"
+        ></div>
       </div>
 
+      <!-- mobile view -->
+      <!-- <div class="mobileView bg-[#3b3b5d] hidden max-h-screen overflow-y-auto">
+          <div class="flex gap-4 px-6 py-2 items-center">
+            <img
+              src="./images/owner.jpeg"
+              alt=""
+              class="rounded-full w-12 h-12"
+            />
+            <p id="greetings" class="text-lg font-semibold text-white"></p>
+          </div>
+       
+        <p class="text-2xl text-white text-center p-2 bg-[#3e3d60]">Chats</p>
+        <input
+          type="text"
+          placeholder="Search friends by their names"
+          class="shadow-md outline-none border-gray-300 w-full p-2 bg-[#2e2e51] text-white"
+          id="searchInput"
+        />
+        <div id="friends-list" class="p-4 text-white"></div>
+      </div> -->
+
       <!-- second with names -->
-      <div class=" col-span-8 row-span-11 relative bg-white ">
-        <div class=" hidden bg-white items-center gap-4 p-2 px-4 shadow-md" id="friend-div">
-          <!-- for current user info display -->
+      <div class="relative col-span-8 lg:row-span-12 bg-[#ddddf6] flex-col hidden lg:flex second">
+        <!-- <p class="open-text text-2xl font-bold my-auto mx-auto">
+          Send and receive messages happily
+        </p> -->
+        <div class="flex items-center justify-between bg-[white] absolute inset-x-0 top-0  py-4 px-4 font-medium shadow-md text-lg">
+          <div
+            class=""
+            id="friend-div"
+          >
+            <!-- for current user info display -->
+          </div>
+          <!-- <div class="hamburger lg:hidden">
+            <img
+              src="/images/hamburger-menu-svgrepo-com.svg"
+              alt=""
+              width="50"
+              height="50"
+            />
+          </div> -->
         </div>
 
-        <div class="p-6 grid gap-2 overflow-y-scroll max-h-[55vh] " id="all-message-holder">
+        <div
+          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh] h-screen"
+          id="all-message-holder"
+        >
           <!-- for message display -->
         </div>
 
         <div
-          class=" flex gap-4 absolute bottom-0 mb-2 right-0 left-0  mx-auto w-full  pl-8 "
+          class="hidden gap-4 bottom-0 right-0 left-0 absolute pl-8 w-full"
           id="send-message-container"
         >
           <input
             type="text"
             placeholder="message your friends"
-            class=" outline-1 border-[#979ee3] border rounded-full w-4/5 p-4 outline-[#979ee3]"
+            class="outline-1 border-[#979ee3] border rounded-full w-4/5 p-4 outline-[#979ee3]"
             id="messages"
           />
           <button
-            class="bg-[#6c77de] text-white text-2xl px-6 py-1 rounded-full"
+            class="bg-[#9bb2fa] text-white text-2xl px-6 py-1 rounded-full"
             id="send-message"
           >
             send
