@@ -142,9 +142,16 @@ function searchFriends(e) {
 // mobile Responsiveness
 hamburger.addEventListener("click", function() {
   mobile.classList.toggle("mobileView")
+   hamburger.src = "/images/close.svg"
 })
 
+// document.querySelector("body").addEventListener("click", function() {
+//  if(firstContainer.classList.contains("mobileView")) {
+//   firstContainer.classList.remove("mobileView")
+//  }
+// })
 
+// console.log(document.querySelector("body"))
 logoutBtn.addEventListener("click", logout);
 
 function logout() {

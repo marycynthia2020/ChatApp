@@ -7,7 +7,7 @@
     <title>Messaging App</title>
   </head>
   <body
-    class="bg-[#3b3b5d] lg:bg-[#a7bcfc] w-screen lg:h-screen grid place-items-center"
+    class="bg-[#3b3b5d] lg:bg-[#a7bcfc] w-screen lg:h-screen grid place-items-center body"
   >
     <div
       class=" relative rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-full lg:w-[70%] lg:h-[90%] lg:max-h-[80%] lg:overflow-y-hidden shadow-xl container"
@@ -48,7 +48,7 @@
               alt=""
               class="rounded-full w-12 h-12"
             />
-            <p id="greetings" class="text-lg font-semibold text-black"></p>
+            <p id="greetings" class="text-sm lg:text-lg font-semibold text-black"></p>
           </div>
           <div class="">
             <?xml version="1.0" ?>
@@ -129,9 +129,9 @@
       </div> -->
 
       <!-- second with names -->
-      <div class="relative col-span-8 lg:row-span-12 bg-[#ddddf6] flex-col flex second ">
-        <p class="open-text text-2xl font-bold my-auto mx-auto">
-          Send and receive messages happily
+      <div class="relative col-span-8 lg:row-span-12 bg-[#ddddf6] flex-col flex second h-screen lg:h-auto">
+        <p class="open-text text-2xl font-bold my-auto mx-auto text-center">
+          Send and receive messages happily. <span className="text-red-400">Click on the hamburger menu to see your friends</span>
         </p>
         <div class="flex items-center justify-between bg-white absolute  inset-x-0 top-0  py-[18px] px-4 font-medium shadow-md text-lg ">
           <div
@@ -151,7 +151,7 @@
         </div>
 
         <div
-          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh]  mt-12"
+          class=" p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh] max-h-[80vh]  mt-20 lg:mt-12"
           id="all-message-holder"
         >
           <!-- for message display -->
