@@ -140,7 +140,7 @@ function searchFriends(e) {
 
 // mobile Responsiveness
 hamburger.addEventListener("click", function() {
-  console.log("hi")
+  
   mobileView.classList.toggle("hidden")
 })
 
