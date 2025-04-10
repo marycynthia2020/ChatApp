@@ -1134,6 +1134,19 @@ padding: 24px;
   align-self: flex-end;
 }
 
+.mobileView{
+  display: block;
+  width: 70%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* bg-red-300 z-40 w-3/5 hidden h-screen fixed top-0 overflow-y-auto */
+
 @media (min-width: 768px) {
   .md\:w-2\/3 {
     width: 66.666667%;
@@ -1218,4 +1231,3 @@ padding: 24px;
     border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
   }
 }
-

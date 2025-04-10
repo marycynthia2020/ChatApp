@@ -4,7 +4,7 @@ const container = document.querySelector(".container");
 const firstContainer = document.querySelector(".first");
 const secondContainer = document.querySelector(".second");
 const hamburger = document.querySelector(".hamburger")
-const mobileView = document.querySelector(".mobileView")
+const mobile = document.querySelector(".mobile")
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 document.getElementById("greetings").innerText += ` ${currentUser.firstName}`;
@@ -37,6 +37,7 @@ function displayFriends(user) {
 
   // Add onclick to each div so that on click, we can get the exact user
   div.onclick = function () {
+    document.querySelector(".open-text").style.display ="none"
     document.getElementById("send-message-container").style.display = "flex";
     document.getElementById("friend-div").style.display = "flex";
     document.getElementById("friend-div").innerHTML = `
@@ -45,11 +46,11 @@ function displayFriends(user) {
         `;
     displayMessages(user.id);
 
-    if (secondContainer.style.display === "!flex") {
-      console.log("hi")
-      firstContainer.style.backgroundColor= "red";
+    // if (secondContainer.style.display === "!flex") {
+    //   console.log("hi")
+    //   firstContainer.style.backgroundColor= "red";
       // secondContainer.classList.remove("hidden");
-    } 
+    
     // else {
     //   firstContainer.style.display = "block";
     //   secondContainer.classList.remove("hidden");
@@ -140,8 +141,7 @@ function searchFriends(e) {
 
 // mobile Responsiveness
 hamburger.addEventListener("click", function() {
-  
-  mobileView.classList.toggle("hidden")
+  mobile.classList.toggle("mobileView")
 })
 
 
