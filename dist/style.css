@@ -751,6 +751,14 @@ video {
   max-height: 80vh;
 }
 
+.max-h-\[60vh\] {
+  max-height: 60vh;
+}
+
+.max-h-\[70vh\] {
+  max-height: 70vh;
+}
+
 .w-10 {
   width: 2.5rem;
 }
