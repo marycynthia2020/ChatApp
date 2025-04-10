@@ -10,7 +10,7 @@
     class="bg-[#3b3b5d] lg:bg-[#a7bcfc] w-screen lg:h-screen grid place-items-center"
   >
     <div
-      class="rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-full lg:w-[70%] lg:h-[90%] lg:max-h-[80%] lg:overflow-y-hidden shadow-xl container"
+      class=" relative rounded-md lg:grid grid-cols-12 grid-rows-12 overflow-x-hidden w-full lg:w-[70%] lg:h-[90%] lg:max-h-[80%] lg:overflow-y-hidden shadow-xl container"
     >
       <!-- <div
         class="bg-white col-span-11 row-span-1 grid grid-cols-6 grid-rows-6 pl-4"
@@ -40,7 +40,7 @@
       </div>  -->
 
       <!-- fist with names -->
-      <div class=" col-span-4 row-span-12 bg-[#3b3b5d] first">
+      <div class=" col-span-4 row-span-12 bg-[#3b3b5d] hidden lg:block first">
         <div class="flex items-center justify-between bg-[white] px-6 py-2">
           <div class="flex gap-2 items-center">
             <img
@@ -87,7 +87,7 @@
       </div>
 
       <!-- mobile view -->
-      <!-- <div class="mobileView bg-[#3b3b5d] hidden max-h-screen overflow-y-auto">
+      <div class="mobileView bg-gray-500 z-40 w-2/5 hidden h-screen absolute top-0 overflow-y-auto">
           <div class="flex gap-4 px-6 py-2 items-center">
             <img
               src="./images/owner.jpeg"
@@ -105,49 +105,49 @@
           id="searchInput"
         />
         <div id="friends-list" class="p-4 text-white"></div>
-      </div> -->
+      </div>
 
       <!-- second with names -->
-      <div class="relative col-span-8 lg:row-span-12 bg-[#ddddf6] flex-col hidden lg:flex second">
+      <div class="relative col-span-8 lg:row-span-12 bg-[#ddddf6] flex-col  flex second ">
         <!-- <p class="open-text text-2xl font-bold my-auto mx-auto">
           Send and receive messages happily
         </p> -->
-        <div class="flex items-center justify-between bg-[white] absolute inset-x-0 top-0  py-4 px-4 font-medium shadow-md text-lg">
+        <div class="flex items-center justify-between bg-white absolute  inset-x-0 top-0  py-[18px] px-4 font-medium shadow-md text-lg ">
           <div
             class=""
             id="friend-div"
           >
             <!-- for current user info display -->
           </div>
-          <!-- <div class="hamburger lg:hidden">
+          <div class="hamburger lg:hidden">
             <img
               src="/images/hamburger-menu-svgrepo-com.svg"
               alt=""
               width="50"
               height="50"
             />
-          </div> -->
+          </div>
         </div>
 
         <div
-          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh] h-screen"
+          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh] mt-12"
           id="all-message-holder"
         >
           <!-- for message display -->
         </div>
 
         <div
-          class="hidden gap-4 bottom-0 right-0 left-0 absolute pl-8 w-full"
+          class="hidden gap-4 bottom-0 right-0 pr-4 left-0 absolute pl-8 w-full mb-4 "
           id="send-message-container"
         >
           <input
             type="text"
             placeholder="message your friends"
-            class="outline-1 border-[#979ee3] border rounded-full w-4/5 p-4 outline-[#979ee3]"
+            class="outline-1 border-[#979ee3] border  w-4/5 p-4 outline-[#979ee3]"
             id="messages"
           />
           <button
-            class="bg-[#9bb2fa] text-white text-2xl px-6 py-1 rounded-full"
+            class="bg-[#9bb2fa] text-white text-2xl px-6 "
             id="send-message"
           >
             send

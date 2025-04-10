@@ -49,20 +49,23 @@ margin-bottom: 32px;
 padding: 24px;
 
 } */
-
+/* 
 .friend-div img {
     width: 48px;
     height: 48px;
-}
+} */
 
 .message-sent, .message-recieved{
     width: fit-content;
     /* min-width: 100px; */
-    padding: 4px 8px;
+    padding:  8px;
     font-size: 18px;
     border-radius: 10px;
-    overflow: hidden;
+    max-width: 300px;
     display: flex;
+    align-items: center;
+    gap: 4px;
+    word-wrap: wrap;
 
 }
 .message-sent{

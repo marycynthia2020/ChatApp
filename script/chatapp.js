@@ -1,8 +1,10 @@
 const logoutBtn = document.getElementById("logout");
 const searchInput = document.getElementById("searchInput");
-const container = document.querySelector(".container")
-const firstContainer = document.querySelector(".first")
-const secondContainer = document.querySelector(".second")
+const container = document.querySelector(".container");
+const firstContainer = document.querySelector(".first");
+const secondContainer = document.querySelector(".second");
+const hamburger = document.querySelector(".hamburger")
+const mobileView = document.querySelector(".mobileView")
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 document.getElementById("greetings").innerText += ` ${currentUser.firstName}`;
@@ -37,25 +39,27 @@ function displayFriends(user) {
   div.onclick = function () {
     document.getElementById("send-message-container").style.display = "flex";
     document.getElementById("friend-div").style.display = "flex";
-
-    if(secondContainer.classList.contains("hidden")){
-      firstContainer.style.display = "none"
-      secondContainer.classList.remove("hidden")
-      document.getElementById("friend-div").innerHTML = `
+    document.getElementById("friend-div").innerHTML = `
         
-      <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
-    `;
-displayMessages(user.id);
+          <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
+        `;
+    displayMessages(user.id);
 
-// add event to the send message btn so you can get the user id
-const sendBtn = document.getElementById("send-message");
-sendBtn.onclick = function () {
-  sendMessage(user.id);
-};
-    }
+    if (secondContainer.style.display === "!flex") {
+      console.log("hi")
+      firstContainer.style.backgroundColor= "red";
+      // secondContainer.classList.remove("hidden");
+    } 
+    // else {
+    //   firstContainer.style.display = "block";
+    //   secondContainer.classList.remove("hidden");
+    // }
 
-
-   
+    // add event to the send message btn so you can get the user id
+    const sendBtn = document.getElementById("send-message");
+    sendBtn.onclick = function () {
+      sendMessage(user.id);
+    };
   };
 }
 
@@ -85,7 +89,6 @@ function sendMessage(id) {
     displayMessages(selectedUser.id);
   }
 }
-
 
 // function to display messages
 function displayMessages(id) {
@@ -133,6 +136,14 @@ function searchFriends(e) {
     });
   }
 }
+
+
+// mobile Responsiveness
+hamburger.addEventListener("click", function() {
+  console.log("hi")
+  mobileView.classList.toggle("hidden")
+})
+
 
 logoutBtn.addEventListener("click", logout);
 
