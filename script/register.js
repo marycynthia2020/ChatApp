@@ -1,3 +1,22 @@
+const dormantUser1 ={
+      firstName: "Kingsley",
+      lastName: "Sam",
+      email: "kinsleyjon@gmail.com",
+      password: "12345",
+      isLoggedIn:false,
+      id:crypto.randomUUID(),
+      message: [],
+    };
+
+    const dormantUser2 ={
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@gmail.com",
+      password: "123456",
+      isLoggedIn:false,
+      id:crypto.randomUUID(),
+      message: [],
+    };
 const registerBtn = document.getElementById("submit");
 
 registerBtn.addEventListener("click", register);
@@ -74,7 +93,7 @@ function register(e) {
         return
       }
     }
-    users.push(newUser)
+    users.push(newUser, dormantUser1, dormantUser2)
     localStorage.setItem("users", JSON.stringify(users))
     alert("Registration Successful")
     window.location.href = "login.html";

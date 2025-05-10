@@ -3,13 +3,24 @@ const searchInput = document.getElementById("searchInput");
 const container = document.querySelector(".container");
 const firstContainer = document.querySelector(".first");
 const secondContainer = document.querySelector(".second");
-const hamburger = document.querySelector(".hamburger")
-const mobile = document.querySelector(".mobile")
+const hamburger = document.querySelector(".hamburger");
+const mobile = document.querySelector(".mobile");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+document
+  .getElementById("currentUserAvatar")
+  .appendChild(generateAvatar(currentUser));
 document.getElementById("greetings").innerText += ` ${currentUser.firstName}`;
-
 let users = JSON.parse(localStorage.getItem("users")) || [];
+
+function generateAvatar(user) {
+  const imageDiv = document.createElement("div");
+  imageDiv.className = "imageDiv";
+  const firstLetter = user.firstName.slice(0, 1);
+  const secondLetter = user.lastName.slice(0, 1);
+  imageDiv.innerHTML = `<span class = "text-lg">${firstLetter}${secondLetter}</span>`;
+  return imageDiv;
+}
 
 //  display other users as friends
 users.map(user => {
@@ -19,16 +30,9 @@ users.map(user => {
 });
 
 function displayFriends(user) {
-  // to generate avatar for users
-  const imageDiv = document.createElement("div");
-  imageDiv.className = "imageDiv";
-  const firstLetter = user.firstName.slice(0, 1);
-  const secondLetter = user.lastName.slice(0, 1);
-  imageDiv.innerHTML = `<span class = "text-lg">${firstLetter}${secondLetter}</span>`;
-
   const div = document.createElement("div");
   div.className = "friends-container";
-  div.appendChild(imageDiv);
+  div.appendChild(generateAvatar(user));
 
   div.innerHTML += `
           <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
@@ -37,7 +41,8 @@ function displayFriends(user) {
 
   // Add onclick to each div so that on click, we can get the exact user
   div.onclick = function () {
-    document.querySelector(".open-text").style.display ="none"
+    mobile.classList.remove("mobileView")
+    document.querySelector(".open-text").style.display = "none";
     document.getElementById("send-message-container").style.display = "flex";
     document.getElementById("friend-div").style.display = "flex";
     document.getElementById("friend-div").innerHTML = `
@@ -49,8 +54,8 @@ function displayFriends(user) {
     // if (secondContainer.style.display === "!flex") {
     //   console.log("hi")
     //   firstContainer.style.backgroundColor= "red";
-      // secondContainer.classList.remove("hidden");
-    
+    // secondContainer.classList.remove("hidden");
+
     // else {
     //   firstContainer.style.display = "block";
     //   secondContainer.classList.remove("hidden");
@@ -66,7 +71,7 @@ function displayFriends(user) {
 
 // sendMessage function
 function sendMessage(id) {
-  const textMessage = document.getElementById("messages").value;
+  let textMessage = document.getElementById("messages").value;
 
   // go to users and find the owner of this id
   const selectedUser = users.find(user => user.id === id);
@@ -88,6 +93,7 @@ function sendMessage(id) {
     localStorage.setItem("users", JSON.stringify(users));
 
     displayMessages(selectedUser.id);
+    document.getElementById("messages").value = "";
   }
 }
 
@@ -95,10 +101,10 @@ function sendMessage(id) {
 function displayMessages(id) {
   document.getElementById("all-message-holder").innerHTML = "";
   currentUser.message.forEach(userMessage => {
+    // console.log(userMessage.message)
     if (
-      userMessage.receiver === id &&
-      userMessage.sender === currentUser.id
-      // (userMessage.receiver === currentUser.id && userMessage.sender === id)
+      (userMessage.receiver === id && userMessage.sender === currentUser.id) ||
+      (userMessage.receiver === currentUser.id && userMessage.sender === id)
     ) {
       const messageHolder = document.createElement("div");
       const textHolder = document.createElement("p");
@@ -109,10 +115,12 @@ function displayMessages(id) {
         currentUser.id === userMessage.sender && userMessage.receiver === id
           ? "message-sent"
           : "message-recieved";
+
       textHolder.innerText = userMessage.message;
       timeHolder.innerHTML = formatsTime(userMessage.timestamp);
       messageHolder.appendChild(textHolder);
       messageHolder.appendChild(timeHolder);
+      //  console.log(messageHolder.innerHTML)
       document.getElementById("all-message-holder").appendChild(messageHolder);
     }
   });
@@ -120,14 +128,14 @@ function displayMessages(id) {
 
 //Searching of friends by first name and last name
 searchInput.addEventListener("input", searchFriends);
-
 function searchFriends(e) {
   let string = e.target.value;
   const friends = users.filter(user => user.id !== currentUser.id);
 
   let foundFriends = friends.filter(friend => {
     return (
-      friend.firstName.startsWith(string) || friend.lastName.startsWith(string)
+      friend.firstName.toLowerCase().startsWith(string) ||
+      friend.lastName.toLowerCase().startsWith(string)
     );
   });
   if (foundFriends) {
@@ -138,24 +146,26 @@ function searchFriends(e) {
   }
 }
 
-
 // mobile Responsiveness
-hamburger.addEventListener("click", function() {
-  console.log("hi")
-  mobile.classList.toggle("mobileView")
-   hamburger.src = "/images/close.svg"
+hamburger.addEventListener("click", function (e) {
+  e.stopPropagation()
+  mobile.classList.toggle("mobileView");
+  hamburger.src = "/images/close.svg";
+});
+
+document.querySelector(".secondDiv").addEventListener("click", ()=> {
+  mobile.classList.remove("mobileView")
 })
-
-
 logoutBtn.addEventListener("click", logout);
 
 function logout() {
-  let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+  // let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
 }
 
 function formatsTime(timestamp) {
   const date = new Date(timestamp);
+  // date.getMinutes() > 10? `0${date.getMinutes()}`: date.getMinutes()
   return date.getHours() + ":" + date.getMinutes();
 }
