@@ -41,7 +41,7 @@ function displayFriends(user) {
 
   // Add onclick to each div so that on click, we can get the exact user
   div.onclick = function () {
-    mobile.classList.remove("mobileView")
+    mobile.classList.remove("mobileView");
     document.querySelector(".open-text").style.display = "none";
     document.getElementById("send-message-container").style.display = "flex";
     document.getElementById("friend-div").style.display = "flex";
@@ -50,16 +50,6 @@ function displayFriends(user) {
           <div class="" id="current-friend-name ">${user.firstName} ${user.lastName}</div>
         `;
     displayMessages(user.id);
-
-    // if (secondContainer.style.display === "!flex") {
-    //   console.log("hi")
-    //   firstContainer.style.backgroundColor= "red";
-    // secondContainer.classList.remove("hidden");
-
-    // else {
-    //   firstContainer.style.display = "block";
-    //   secondContainer.classList.remove("hidden");
-    // }
 
     // add event to the send message btn so you can get the user id
     const sendBtn = document.getElementById("send-message");
@@ -101,7 +91,6 @@ function sendMessage(id) {
 function displayMessages(id) {
   document.getElementById("all-message-holder").innerHTML = "";
   currentUser.message.forEach(userMessage => {
-    // console.log(userMessage.message)
     if (
       (userMessage.receiver === id && userMessage.sender === currentUser.id) ||
       (userMessage.receiver === currentUser.id && userMessage.sender === id)
@@ -120,7 +109,6 @@ function displayMessages(id) {
       timeHolder.innerHTML = formatsTime(userMessage.timestamp);
       messageHolder.appendChild(textHolder);
       messageHolder.appendChild(timeHolder);
-      //  console.log(messageHolder.innerHTML)
       document.getElementById("all-message-holder").appendChild(messageHolder);
     }
   });
@@ -148,18 +136,17 @@ function searchFriends(e) {
 
 // mobile Responsiveness
 hamburger.addEventListener("click", function (e) {
-  e.stopPropagation()
+  e.stopPropagation();
   mobile.classList.toggle("mobileView");
   hamburger.src = "/images/close.svg";
 });
 
-document.querySelector(".secondDiv").addEventListener("click", ()=> {
-  mobile.classList.remove("mobileView")
-})
+document.querySelector(".secondDiv").addEventListener("click", () => {
+  mobile.classList.remove("mobileView");
+});
 logoutBtn.addEventListener("click", logout);
 
 function logout() {
-  // let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
 }
