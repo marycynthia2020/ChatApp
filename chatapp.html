@@ -88,30 +88,32 @@
         </div>
 
         <div
-          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[60vh] max-h-[70vh] mt-12 lg:mt-12"
+          class="p-6 grid gap-4 overflow-y-auto lg:max-h-[65vh] max-h-[80vh] mt-12 lg:mt-12"
           id="all-message-holder"
         >
           <!-- for message display -->
         </div>
 
-        <div
+        <form
           class="hidden gap-4 bottom-0 right-0 left-0 absolute w-full bg-[#1d1c1c] p-2"
           id="send-message-container"
         >
-          <input
-            type="text"
-            placeholder="Type a message..."
-            class="outline-none w-[90%] p-4 rounded-md bg-[#3b3b5d] text-white"
-            id="messages"
-          />
-          <button class="" id="send-message">
+          
+            <input
+              type="text"
+              placeholder="Type a message..."
+              class="outline-none w-[90%] p-4 rounded-md bg-[#3b3b5d] text-white"
+              id="messages"
+            />
+          
+          <button class="" id="send-message" type="submit">
             <img
               src="./images/arrows_14996948 (2).png"
               width="50"
               height="30"
             />
           </button>
-        </div>
+        </form>
       </div>
     </div>
     <script src="script/chatapp.js"></script>

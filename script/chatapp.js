@@ -53,7 +53,8 @@ function displayFriends(user) {
 
     // add event to the send message btn so you can get the user id
     const sendBtn = document.getElementById("send-message");
-    sendBtn.onclick = function () {
+    sendBtn.onclick = function (e) {
+       e.preventDefault()
       sendMessage(user.id);
     };
   };
@@ -61,6 +62,7 @@ function displayFriends(user) {
 
 // sendMessage function
 function sendMessage(id) {
+ 
   let textMessage = document.getElementById("messages").value;
 
   // go to users and find the owner of this id
@@ -153,6 +155,15 @@ function logout() {
 
 function formatsTime(timestamp) {
   const date = new Date(timestamp);
-  // date.getMinutes() > 10? `0${date.getMinutes()}`: date.getMinutes()
-  return date.getHours() + ":" + date.getMinutes();
+  let hours = date.getHours()
+  let minutes = date.getMinutes()
+  let ampm = hours >=12 ? "PM": "AM"
+  hours  = hours % 12
+  hours = hours ? hours : 12
+  minutes = minutes < 10 ? "0"+minutes : minutes
+  let strTime = hours + ":" + minutes + " " + ampm
+  return strTime  
+
 }
+
+
