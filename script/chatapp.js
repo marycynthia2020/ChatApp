@@ -6,6 +6,9 @@ const secondContainer = document.querySelector(".second");
 const hamburger = document.querySelector(".hamburger");
 const mobile = document.querySelector(".mobile");
 
+const timeSpan = document.createElement("span");
+const lastMessageContainer = document.createElement("p");
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 document
   .getElementById("currentUserAvatar")
@@ -35,8 +38,8 @@ function displayFriends(user) {
   div.appendChild(generateAvatar(user));
 
   div.innerHTML += `
-          <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
-        `;
+    <h4 class="text-lg font-semibold">${user.firstName}  ${user.lastName}</h4>
+  `;
   document.getElementById("friends-list").appendChild(div);
 
   // Add onclick to each div so that on click, we can get the exact user
@@ -54,7 +57,7 @@ function displayFriends(user) {
     // add event to the send message btn so you can get the user id
     const sendBtn = document.getElementById("send-message");
     sendBtn.onclick = function (e) {
-       e.preventDefault()
+      e.preventDefault();
       sendMessage(user.id);
     };
   };
@@ -62,7 +65,6 @@ function displayFriends(user) {
 
 // sendMessage function
 function sendMessage(id) {
- 
   let textMessage = document.getElementById("messages").value;
 
   // go to users and find the owner of this id
@@ -155,15 +157,12 @@ function logout() {
 
 function formatsTime(timestamp) {
   const date = new Date(timestamp);
-  let hours = date.getHours()
-  let minutes = date.getMinutes()
-  let ampm = hours >=12 ? "PM": "AM"
-  hours  = hours % 12
-  hours = hours ? hours : 12
-  minutes = minutes < 10 ? "0"+minutes : minutes
-  let strTime = hours + ":" + minutes + " " + ampm
-  return strTime  
-
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  let strTime = hours + ":" + minutes + " " + ampm;
+  return strTime;
 }
-
-
